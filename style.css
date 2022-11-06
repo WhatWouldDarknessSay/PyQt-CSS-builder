@@ -1,0 +1,10 @@
+.object{
+    
+    width: 100px;
+    height: 50px;
+    background-color: #727272;
+    color: white;
+    outline: dotted;
+    outline-color: black;
+    outline-width: 10px;
+}
