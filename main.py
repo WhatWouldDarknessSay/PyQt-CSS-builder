@@ -86,7 +86,7 @@ class PyQtDb:
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("CSS Builder")
-        MainWindow.setFixedSize(600, 400)
+        MainWindow.setFixedSize(650, 400)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.centralwidget)
@@ -186,14 +186,136 @@ class Ui_MainWindow(object):
         )
         self.horizontalLayout_5.addWidget(self.outlinecolor_visualizer)
         self.verticalLayout.addWidget(self.outlinecolor_frame)
+        # border-style:
+        self.borderstyle_frame = QtWidgets.QFrame(self.scrollAreaWidgetContents)
+        self.borderstyle_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.borderstyle_frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.borderstyle_frame.setObjectName("borderstyle_frame")
+        self.horizontalLayout_7 = QtWidgets.QHBoxLayout(self.borderstyle_frame)
+        self.horizontalLayout_7.setObjectName("horizontalLayout_7")
+        self.borderstyle_lbl = QtWidgets.QLabel(self.borderstyle_frame)
+        self.borderstyle_lbl.setObjectName("borderstyle_lbl")
+        self.horizontalLayout_7.addWidget(self.borderstyle_lbl)
 
-        # self.outlinecolor_val = QtWidgets.QLineEdit(self.outlinecolor_frame)
-        # self.outlinecolor_val.setPlaceholderText('HEX')
-        # self.outlinecolor_val.setText('#000000')
-        # self.horizontalLayout_5.addWidget(self.outlinecolor_val)
-
-        #
-
+        self.borderstyle_val = QtWidgets.QComboBox(self.borderstyle_frame)
+        self.borderstyle_val.addItems(
+            [
+                "dotted",
+                "dashed",
+                "solid",
+                "double",
+                "groove",
+                "ridge",
+                "inset",
+                "outset",
+                "none",
+                "hidden",
+            ]
+        )
+        self.borderstyle_val.setObjectName("borderstyle_val")
+        self.horizontalLayout_7.addWidget(self.borderstyle_val)
+        self.verticalLayout.addWidget(self.borderstyle_frame)
+        # border-width
+        self.borderwidth_frame = QtWidgets.QFrame(self.scrollAreaWidgetContents)
+        self.borderwidth_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.borderwidth_frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.borderwidth_frame.setObjectName("border_frame")
+        self.horizontalLayout_8 = QtWidgets.QHBoxLayout(self.borderwidth_frame)
+        self.horizontalLayout_8.setObjectName("horizontalLayout_8")
+        self.borderwidth_lbl = QtWidgets.QLabel(self.borderwidth_frame)
+        self.borderwidth_lbl.setObjectName("border_lbl")
+        self.horizontalLayout_8.addWidget(self.borderwidth_lbl)
+        self.borderwidth_val = QtWidgets.QSpinBox(self.borderwidth_frame)
+        self.borderwidth_val.setObjectName("border_val")
+        self.horizontalLayout_8.addWidget(self.borderwidth_val)
+        self.verticalLayout.addWidget(self.borderwidth_frame)
+        # border color
+        self.bordercolor_frame = QtWidgets.QFrame(self.scrollAreaWidgetContents)
+        self.bordercolor_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.bordercolor_frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.bordercolor_frame.setObjectName("bordercolor_frame")
+        self.horizontalLayout_9 = QtWidgets.QHBoxLayout(self.bordercolor_frame)
+        self.horizontalLayout_9.setObjectName("horizontalLayout_5")
+        self.bordercolor_lbl = QtWidgets.QLabel(self.bordercolor_frame)
+        self.bordercolor_lbl.setObjectName("bordercolor_lbl")
+        self.horizontalLayout_9.addWidget(self.bordercolor_lbl)
+        self.bordercolor_val = QtWidgets.QLineEdit(self.bordercolor_frame)
+        self.bordercolor_val.setPlaceholderText("HEX")
+        self.bordercolor_val.setText("#000000")
+        self.bordercolor_val.setObjectName("bordercolor_val")
+        self.horizontalLayout_9.addWidget(self.bordercolor_val)
+        self.bordercolor_visualizer = QtWidgets.QPushButton(self.bordercolor_frame)
+        self.bordercolor_visualizer.setFixedSize(20, 20)
+        self.bordercolor_visualizer.move(10, 0)
+        self.bordercolor_visualizer.setAutoFillBackground(True)
+        self.bordercolor_visualizer.setStyleSheet(
+            f"background-color: {self.bordercolor_val.text()};"
+        )
+        self.horizontalLayout_9.addWidget(self.bordercolor_visualizer)
+        self.verticalLayout.addWidget(self.bordercolor_frame)
+        # border-radius
+        self.border_radius_frame = QtWidgets.QFrame(self.scrollAreaWidgetContents)
+        self.border_radius_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.border_radius_frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.border_radius_frame.setObjectName("border_radius_frame")
+        self.horizontalLayout_6 = QtWidgets.QHBoxLayout(self.border_radius_frame)
+        self.horizontalLayout_6.setObjectName("horizontalLayout_6")
+        self.border_radius_lbl = QtWidgets.QLabel(self.border_radius_frame)
+        self.border_radius_lbl.setObjectName("border_radius_lbl")
+        self.horizontalLayout_6.addWidget(self.border_radius_lbl)
+        self.border_radius_val = QtWidgets.QSpinBox(self.border_radius_frame)
+        self.border_radius_val.setObjectName("border_radius_val")
+        self.horizontalLayout_6.addWidget(self.border_radius_val)
+        self.verticalLayout.addWidget(self.border_radius_frame)
+        # background-color
+        self.backgroundcolor_frame = QtWidgets.QFrame(self.scrollAreaWidgetContents)
+        self.backgroundcolor_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.backgroundcolor_frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.backgroundcolor_frame.setObjectName("backgroundcolor_frame")
+        self.horizontalLayout_10 = QtWidgets.QHBoxLayout(self.backgroundcolor_frame)
+        self.horizontalLayout_10.setObjectName("horizontalLayout_5")
+        self.backgroundcolor_lbl = QtWidgets.QLabel(self.backgroundcolor_frame)
+        self.backgroundcolor_lbl.setObjectName("backgroundcolor_lbl")
+        self.horizontalLayout_10.addWidget(self.backgroundcolor_lbl)
+        self.backgroundcolor_val = QtWidgets.QLineEdit(self.backgroundcolor_frame)
+        self.backgroundcolor_val.setPlaceholderText("HEX")
+        self.backgroundcolor_val.setText("#000000")
+        self.backgroundcolor_val.setObjectName("backgroundcolor_val")
+        self.horizontalLayout_10.addWidget(self.backgroundcolor_val)
+        self.backgroundcolor_visualizer = QtWidgets.QPushButton(
+            self.backgroundcolor_frame
+        )
+        self.backgroundcolor_visualizer.setFixedSize(20, 20)
+        self.backgroundcolor_visualizer.move(10, 0)
+        self.backgroundcolor_visualizer.setAutoFillBackground(True)
+        self.backgroundcolor_visualizer.setStyleSheet(
+            f"background-color: {self.backgroundcolor_val.text()};"
+        )
+        self.horizontalLayout_10.addWidget(self.backgroundcolor_visualizer)
+        self.verticalLayout.addWidget(self.backgroundcolor_frame)
+        # text color
+        self.textcolor_frame = QtWidgets.QFrame(self.scrollAreaWidgetContents)
+        self.textcolor_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.textcolor_frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.textcolor_frame.setObjectName("textcolor_frame")
+        self.horizontalLayout_11 = QtWidgets.QHBoxLayout(self.textcolor_frame)
+        self.horizontalLayout_11.setObjectName("horizontalLayout_5")
+        self.textcolor_lbl = QtWidgets.QLabel(self.textcolor_frame)
+        self.textcolor_lbl.setObjectName("textcolor_lbl")
+        self.horizontalLayout_11.addWidget(self.textcolor_lbl)
+        self.textcolor_val = QtWidgets.QLineEdit(self.textcolor_frame)
+        self.textcolor_val.setPlaceholderText("HEX")
+        self.textcolor_val.setText("#000000")
+        self.textcolor_val.setObjectName("textcolor_val")
+        self.horizontalLayout_11.addWidget(self.textcolor_val)
+        self.textcolor_visualizer = QtWidgets.QPushButton(self.textcolor_frame)
+        self.textcolor_visualizer.setFixedSize(20, 20)
+        self.textcolor_visualizer.move(10, 0)
+        self.textcolor_visualizer.setAutoFillBackground(True)
+        self.textcolor_visualizer.setStyleSheet(f"color: {self.textcolor_val.text()};")
+        self.horizontalLayout_11.addWidget(self.textcolor_visualizer)
+        self.verticalLayout.addWidget(self.textcolor_frame)
+        # other
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
         self.horizontalLayout.addWidget(self.scrollArea)
         MainWindow.setCentralWidget(self.centralwidget)
@@ -235,10 +357,16 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.apply_btn.setText(_translate("MainWindow", "Применить"))
+        self.apply_btn.setText(_translate("MainWindow", "Apply"))
         self.outlinewidth_lbl.setText(_translate("MainWindow", "Outline width"))
         self.outlinestyle_lbl.setText(_translate("MainWindow", "Outline style"))
         self.outlinecolor_lbl.setText(_translate("MainWindow", "Outline color"))
+        self.borderstyle_lbl.setText(_translate("MainWindow", "Border style"))
+        self.borderwidth_lbl.setText(_translate("Mainwindow", "Border width"))
+        self.bordercolor_lbl.setText(_translate("MainWindow", "Border color"))
+        self.border_radius_lbl.setText(_translate("MainWindow", "Border radius"))
+        self.backgroundcolor_lbl.setText(_translate("MainWindow", "Background color"))
+        self.textcolor_lbl.setText(_translate("MainWindow", "Text color"))
         self.menuFile.setTitle(_translate("MainWindow", "File"))
         self.menuAbout.setTitle(_translate("MainWindow", "About"))
         self.menuCSS.setTitle(_translate("MainWindow", "CSS"))
@@ -264,6 +392,17 @@ class MyWidget(QMainWindow, Ui_MainWindow):
         self.outlinecolor_visualizer.clicked.connect(
             lambda: self.color_event("outline")
         )
+        self.borderstyle_val.currentTextChanged.connect(self.change_border_style)
+        self.border_radius_val.textChanged.connect(self.change_border_radius)
+        self.borderwidth_val.textChanged.connect(self.change_border_width)
+        self.bordercolor_val.textChanged.connect(self.change_border_color)
+        self.bordercolor_visualizer.clicked.connect(lambda: self.color_event("border"))
+        self.backgroundcolor_val.textChanged.connect(self.change_background_color)
+        self.backgroundcolor_visualizer.clicked.connect(
+            lambda: self.color_event("background")
+        )
+        self.textcolor_val.textChanged.connect(self.change_text_color)
+        self.textcolor_visualizer.clicked.connect(lambda: self.color_event("text"))
         self.actionSave_Preset.triggered.connect(self.save_preset)
         self.actionLoad_Preset.triggered.connect(self.load_preset)
         self.actionCopy_Text.triggered.connect(self.copy_text)
@@ -288,6 +427,38 @@ class MyWidget(QMainWindow, Ui_MainWindow):
             self.outlinecolor_val.setText(outline_color[0].split()[1][:-1])
         else:
             self.outlinecolor_val.setText("#000000")
+        border_style = list(filter(lambda x: "border:" in x, self.current_css))
+        if len(border_style) != 0:
+            self.borderstyle_val.setCurrentText(border_style[0].split()[1][:-1])
+        else:
+            self.borderstyle_val.setCurrentText("solid")
+        border_width = list(filter(lambda x: "border-width" in x, self.current_css))
+        if len(border_width) != 0:
+            self.borderwidth_val.setValue(int(border_width[0].split()[1][:-3]))
+        else:
+            self.borderwidth_val.setValue(0)
+        border_color = list(filter(lambda x: "border-color:" in x, self.current_css))
+        if len(border_color) != 0:
+            self.bordercolor_val.setText(border_color[0].split()[1][:-1])
+        else:
+            self.bordercolor_val.setText("#000000")
+        border_radius = list(filter(lambda x: "border-radius:" in x, self.current_css))
+        if len(border_radius) != 0:
+            self.border_radius_val.setValue(int(border_radius[0].split()[1][:-3]))
+        else:
+            self.border_radius_val.setValue(0)
+        background_color = list(
+            filter(lambda x: "background-color:" in x, self.current_css)
+        )
+        if len(background_color) != 0:
+            self.backgroundcolor_val.setText(background_color[0].split()[1][:-1])
+        else:
+            self.backgroundcolor_val.setText("#ffffff")
+        text_color = list(filter(lambda x: "color:" in x, self.current_css))
+        if len(text_color) != 0:
+            self.textcolor_val.setText(text_color[0].split()[1][:-1])
+        else:
+            self.textcolor_val.setText("#000000")
 
     def save_preset(self):
         name, ok_pressed = QtWidgets.QInputDialog.getText(
@@ -391,10 +562,105 @@ class MyWidget(QMainWindow, Ui_MainWindow):
             ] = f"outline: {self.outlinestyle_val.currentText()};"
         print(self.current_css)
 
+    def change_border_style(self):
+        tmp_index = None
+        for index, i in enumerate(self.current_css):
+            if "border:" in i:
+                tmp_index = index
+        if tmp_index is None:
+            self.current_css.append(f"border: {self.borderstyle_val.currentText()};")
+        else:
+            self.current_css[
+                tmp_index
+            ] = f"border: {self.borderstyle_val.currentText()};"
+        print(self.current_css)
+
+    def change_border_width(self):
+        tmp_index = None
+        for index, i in enumerate(self.current_css):
+            if "border-width" in i:
+                tmp_index = index
+        if tmp_index is None:
+            self.current_css.append(f"border-width: {self.borderwidth_val.value()}px;")
+        else:
+            self.current_css[
+                tmp_index
+            ] = f"border-width: {self.borderwidth_val.value()}px;"
+        print(self.current_css)
+
+    def change_border_color(self):
+        tmp_index = None
+        for index, i in enumerate(self.current_css):
+            if "border-color" in i:
+                tmp_index = index
+        if tmp_index is None:
+            self.current_css.append(f"border-color: {self.bordercolor_val.text()};")
+        else:
+            self.current_css[
+                tmp_index
+            ] = f"border-color: {self.bordercolor_val.text()};"
+        self.bordercolor_visualizer.setStyleSheet(
+            f"background-color: {self.bordercolor_val.text()}"
+        )
+        print(self.current_css)
+
+    def change_border_radius(self):
+        tmp_index = None
+        for index, i in enumerate(self.current_css):
+            if "border-radius:" in i:
+                tmp_index = index
+        if tmp_index is None:
+            self.current_css.append(
+                f"border-radius: {self.border_radius_val.value()}px;"
+            )
+        else:
+            self.current_css[
+                tmp_index
+            ] = f"border-radius: {self.border_radius_val.value()}px;"
+        print(self.current_css)
+
+    def change_background_color(self):
+        tmp_index = None
+        for index, i in enumerate(self.current_css):
+            if "background-color" in i:
+                tmp_index = index
+        if tmp_index is None:
+            self.current_css.append(
+                f"background-color: {self.backgroundcolor_val.text()};"
+            )
+        else:
+            self.current_css[
+                tmp_index
+            ] = f"background-color: {self.backgroundcolor_val.text()};"
+        self.backgroundcolor_visualizer.setStyleSheet(
+            f"background-color: {self.backgroundcolor_val.text()}"
+        )
+        print(self.current_css)
+
+    def change_text_color(self):
+        tmp_index = None
+        for index, i in enumerate(self.current_css):
+            if "color" in i:
+                tmp_index = index
+        if tmp_index is None:
+            self.current_css.append(f"color: {self.textcolor_val.text()};")
+        else:
+            self.current_css[tmp_index] = f"color: {self.textcolor_val.text()};"
+        self.textcolor_visualizer.setStyleSheet(
+            f"background-color: {self.textcolor_val.text()}"
+        )
+        print(self.current_css)
+
     def color_event(self, obj):
         color = QColorDialog.getColor().name()
         if obj == "outline":
             self.outlinecolor_val.setText(color)
+        if obj == "border":
+            self.bordercolor_val.setText(color)
+        if obj == "background":
+            self.backgroundcolor_val.setText(color)
+        if obj == "text":
+            self.textcolor_val.setText(color)
 
 
 if __name__ == "__main__":
