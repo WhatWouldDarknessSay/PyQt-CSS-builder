@@ -119,6 +119,25 @@ class Ui_MainWindow(object):
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout.setObjectName("verticalLayout")
+        # size:
+        self.size_frame = QtWidgets.QFrame(self.scrollAreaWidgetContents)
+        self.size_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.size_frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.size_frame.setObjectName("outline_frame")
+        self.horizontalLayout_13 = QtWidgets.QHBoxLayout(self.size_frame)
+        self.horizontalLayout_13.setObjectName("horizontalLayout_3")
+        self.size_lbl = QtWidgets.QLabel(self.size_frame)
+        self.size_lbl.setObjectName("ouline_lbl")
+        self.horizontalLayout_13.addWidget(self.size_lbl)
+        self.size_val1 = QtWidgets.QSpinBox(self.size_frame)
+        self.size_val1.setMaximum(10000)
+        self.size_val1.setObjectName("size_val1")
+        self.horizontalLayout_13.addWidget(self.size_val1)
+        self.size_val2 = QtWidgets.QSpinBox(self.size_frame)
+        self.size_val2.setMaximum(10000)
+        self.size_val2.setObjectName("size_val2")
+        self.horizontalLayout_13.addWidget(self.size_val2)
+        self.verticalLayout.addWidget(self.size_frame)
         # outline width
         self.outlinewidth_frame = QtWidgets.QFrame(self.scrollAreaWidgetContents)
         self.outlinewidth_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
@@ -130,6 +149,7 @@ class Ui_MainWindow(object):
         self.outlinewidth_lbl.setObjectName("ouline_lbl")
         self.horizontalLayout_3.addWidget(self.outlinewidth_lbl)
         self.outlinewidth_val = QtWidgets.QSpinBox(self.outlinewidth_frame)
+        self.outlinewidth_val.setMaximum(10000)
         self.outlinewidth_val.setObjectName("outline_val")
         self.horizontalLayout_3.addWidget(self.outlinewidth_val)
         self.verticalLayout.addWidget(self.outlinewidth_frame)
@@ -226,6 +246,7 @@ class Ui_MainWindow(object):
         self.borderwidth_lbl.setObjectName("border_lbl")
         self.horizontalLayout_8.addWidget(self.borderwidth_lbl)
         self.borderwidth_val = QtWidgets.QSpinBox(self.borderwidth_frame)
+        self.borderwidth_val.setMaximum(10000)
         self.borderwidth_val.setObjectName("border_val")
         self.horizontalLayout_8.addWidget(self.borderwidth_val)
         self.verticalLayout.addWidget(self.borderwidth_frame)
@@ -264,6 +285,7 @@ class Ui_MainWindow(object):
         self.border_radius_lbl.setObjectName("border_radius_lbl")
         self.horizontalLayout_6.addWidget(self.border_radius_lbl)
         self.border_radius_val = QtWidgets.QSpinBox(self.border_radius_frame)
+        self.border_radius_val.setMaximum(10000)
         self.border_radius_val.setObjectName("border_radius_val")
         self.horizontalLayout_6.addWidget(self.border_radius_val)
         self.verticalLayout.addWidget(self.border_radius_frame)
@@ -315,6 +337,50 @@ class Ui_MainWindow(object):
         self.textcolor_visualizer.setStyleSheet(f"color: {self.textcolor_val.text()};")
         self.horizontalLayout_11.addWidget(self.textcolor_visualizer)
         self.verticalLayout.addWidget(self.textcolor_frame)
+        # text font
+        self.textfont_frame = QtWidgets.QFrame(self.scrollAreaWidgetContents)
+        self.textfont_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.textfont_frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.textfont_frame.setObjectName("textfont_frame")
+        self.horizontalLayout_12 = QtWidgets.QHBoxLayout(self.textfont_frame)
+        self.horizontalLayout_12.setObjectName("horizontalLayout_7")
+        self.textfont_lbl = QtWidgets.QLabel(self.textfont_frame)
+        self.textfont_lbl.setObjectName("textfont_lbl")
+        self.horizontalLayout_12.addWidget(self.textfont_lbl)
+
+        self.textfont_val = QtWidgets.QComboBox(self.textfont_frame)
+        self.textfont_val.addItems(
+            [
+                "Arial",
+                "Verdana",
+                "Tahoma",
+                "Trebuchet MS",
+                "Times New Roman",
+                "Georgia",
+                "Garamond",
+                "Courier New",
+                "Brush Script MT",
+            ]
+        )
+        self.textfont_val.setObjectName("textfont_val")
+        self.horizontalLayout_12.addWidget(self.textfont_val)
+        self.verticalLayout.addWidget(self.textfont_frame)
+        # font size
+        self.fontsize_frame = QtWidgets.QFrame(self.scrollAreaWidgetContents)
+        self.fontsize_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.fontsize_frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.fontsize_frame.setObjectName("fontsize_frame")
+        self.horizontalLayout_15 = QtWidgets.QHBoxLayout(self.fontsize_frame)
+        self.horizontalLayout_15.setObjectName("horizontalLayout_6")
+        self.fontsize_lbl = QtWidgets.QLabel(self.fontsize_frame)
+        self.fontsize_lbl.setObjectName("fontsize_lbl")
+        self.horizontalLayout_15.addWidget(self.fontsize_lbl)
+        self.fontsize_val = QtWidgets.QSpinBox(self.fontsize_frame)
+        self.fontsize_val.setMaximum(10000)
+        self.fontsize_val.setObjectName("fontsize_val")
+        self.horizontalLayout_15.addWidget(self.fontsize_val)
+        self.verticalLayout.addWidget(self.fontsize_frame)
+
         # other
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
         self.horizontalLayout.addWidget(self.scrollArea)
@@ -358,6 +424,7 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.apply_btn.setText(_translate("MainWindow", "Apply"))
+        self.size_lbl.setText(_translate("MainWindow", "Size"))
         self.outlinewidth_lbl.setText(_translate("MainWindow", "Outline width"))
         self.outlinestyle_lbl.setText(_translate("MainWindow", "Outline style"))
         self.outlinecolor_lbl.setText(_translate("MainWindow", "Outline color"))
@@ -367,6 +434,8 @@ class Ui_MainWindow(object):
         self.border_radius_lbl.setText(_translate("MainWindow", "Border radius"))
         self.backgroundcolor_lbl.setText(_translate("MainWindow", "Background color"))
         self.textcolor_lbl.setText(_translate("MainWindow", "Text color"))
+        self.textfont_lbl.setText(_translate("MainWindow", "Text font"))
+        self.fontsize_lbl.setText(_translate("MainWindow", "Font size"))
         self.menuFile.setTitle(_translate("MainWindow", "File"))
         self.menuAbout.setTitle(_translate("MainWindow", "About"))
         self.menuCSS.setTitle(_translate("MainWindow", "CSS"))
@@ -385,6 +454,8 @@ class MyWidget(QMainWindow, Ui_MainWindow):
             self.current_css = cssfile.read()[8:-2].split("\n    ")
         print(self.current_css)
         # actions connect
+        self.size_val1.textChanged.connect(self.change_width)
+        self.size_val2.textChanged.connect(self.change_height)
         self.outlinestyle_val.currentTextChanged.connect(self.change_outline_style)
         self.outlinewidth_val.textChanged.connect(self.change_outline_width)
         self.apply_btn.clicked.connect(self.apply_action)
@@ -403,6 +474,8 @@ class MyWidget(QMainWindow, Ui_MainWindow):
         )
         self.textcolor_val.textChanged.connect(self.change_text_color)
         self.textcolor_visualizer.clicked.connect(lambda: self.color_event("text"))
+        self.textfont_val.currentTextChanged.connect(self.change_text_font)
+        self.fontsize_val.textChanged.connect(self.change_font_size)
         self.actionSave_Preset.triggered.connect(self.save_preset)
         self.actionLoad_Preset.triggered.connect(self.load_preset)
         self.actionCopy_Text.triggered.connect(self.copy_text)
@@ -412,6 +485,18 @@ class MyWidget(QMainWindow, Ui_MainWindow):
         self.set_values()
 
     def set_values(self):
+        height = list(filter(lambda x: "height:" in x, self.current_css))
+        width = list(filter(lambda x: "width:" in x, self.current_css))
+        print(height, width)
+        if len(width) != 0:
+            self.size_val1.setValue(int(width[0].split()[1][:-3]))
+        else:
+            self.size_val1.setValue(100)
+        if len(height) != 0:
+            self.size_val2.setValue(int(height[0].split()[1][:-3]))
+        else:
+            self.size_val2.setValue(100)
+
         outline_style = list(filter(lambda x: "outline:" in x, self.current_css))
         if len(outline_style) != 0:
             self.outlinestyle_val.setCurrentText(outline_style[0].split()[1][:-1])
@@ -447,6 +532,7 @@ class MyWidget(QMainWindow, Ui_MainWindow):
             self.border_radius_val.setValue(int(border_radius[0].split()[1][:-3]))
         else:
             self.border_radius_val.setValue(0)
+
         background_color = list(
             filter(lambda x: "background-color:" in x, self.current_css)
         )
@@ -454,11 +540,23 @@ class MyWidget(QMainWindow, Ui_MainWindow):
             self.backgroundcolor_val.setText(background_color[0].split()[1][:-1])
         else:
             self.backgroundcolor_val.setText("#ffffff")
-        text_color = list(filter(lambda x: "color:" in x, self.current_css))
+
+        text_color = list(filter(lambda x: "color: " in x, self.current_css))
         if len(text_color) != 0:
             self.textcolor_val.setText(text_color[0].split()[1][:-1])
         else:
             self.textcolor_val.setText("#000000")
+
+        text_font = list(filter(lambda x: "font-family:" in x, self.current_css))
+        if len(text_font) != 0:
+            self.textfont_val.setCurrentText(text_font[0].split()[1][1:-2])
+        else:
+            self.textfont_val.setCurrentText("Times New Roman")
+        font_size = list(filter(lambda x: "font-size:" in x, self.current_css))
+        if len(font_size) != 0:
+            self.fontsize_val.setValue(int(font_size[0].split()[1][:-3]))
+        else:
+            self.fontsize_val.setValue(20)
 
     def save_preset(self):
         name, ok_pressed = QtWidgets.QInputDialog.getText(
@@ -510,13 +608,35 @@ class MyWidget(QMainWindow, Ui_MainWindow):
 
     def apply_action(self):
         with open("style.css", "w") as file:
-            file.write(".object{" + "\n    ".join(self.current_css) + "\n}")
+            file.write(".object{\n    " + "\n    ".join(self.current_css) + "\n}")
 
         self.webEngineView.load(
             QtCore.QUrl().fromLocalFile(
                 os.path.split(os.path.abspath(__file__))[0] + r"\index.html"
             )
         )
+
+    def change_height(self):
+        print("height changed")
+        tmp_index = None
+        for index, i in enumerate(self.current_css):
+            if "height:" in i:
+                print(i)
+                tmp_index = index
+        if tmp_index is None:
+            self.current_css.append(f"height: {self.size_val2.value()}px;")
+        else:
+            self.current_css[tmp_index] = f"height: {self.size_val2.value()}px;"
+
+    def change_width(self):
+        tmp_index = None
+        for index, i in enumerate(self.current_css):
+            if "width:" in i:
+                tmp_index = index
+        if tmp_index is None:
+            self.current_css.append(f"width: {self.size_val1.value()}px;")
+        else:
+            self.current_css[tmp_index] = f"width: {self.size_val1.value()}px;"
 
     def change_outline_color(self):
         tmp_index = None
@@ -532,7 +652,6 @@ class MyWidget(QMainWindow, Ui_MainWindow):
         self.outlinecolor_visualizer.setStyleSheet(
             f"background-color: {self.outlinecolor_val.text()}"
         )
-        print(self.current_css)
 
     def change_outline_width(self):
         tmp_index = None
@@ -547,7 +666,6 @@ class MyWidget(QMainWindow, Ui_MainWindow):
             self.current_css[
                 tmp_index
             ] = f"outline-width: {self.outlinewidth_val.value()}px;"
-        print(self.current_css)
 
     def change_outline_style(self):
         tmp_index = None
@@ -560,7 +678,6 @@ class MyWidget(QMainWindow, Ui_MainWindow):
             self.current_css[
                 tmp_index
             ] = f"outline: {self.outlinestyle_val.currentText()};"
-        print(self.current_css)
 
     def change_border_style(self):
         tmp_index = None
@@ -573,7 +690,6 @@ class MyWidget(QMainWindow, Ui_MainWindow):
             self.current_css[
                 tmp_index
             ] = f"border: {self.borderstyle_val.currentText()};"
-        print(self.current_css)
 
     def change_border_width(self):
         tmp_index = None
@@ -586,7 +702,6 @@ class MyWidget(QMainWindow, Ui_MainWindow):
             self.current_css[
                 tmp_index
             ] = f"border-width: {self.borderwidth_val.value()}px;"
-        print(self.current_css)
 
     def change_border_color(self):
         tmp_index = None
@@ -602,7 +717,6 @@ class MyWidget(QMainWindow, Ui_MainWindow):
         self.bordercolor_visualizer.setStyleSheet(
             f"background-color: {self.bordercolor_val.text()}"
         )
-        print(self.current_css)
 
     def change_border_radius(self):
         tmp_index = None
@@ -617,7 +731,6 @@ class MyWidget(QMainWindow, Ui_MainWindow):
             self.current_css[
                 tmp_index
             ] = f"border-radius: {self.border_radius_val.value()}px;"
-        print(self.current_css)
 
     def change_background_color(self):
         tmp_index = None
@@ -635,21 +748,33 @@ class MyWidget(QMainWindow, Ui_MainWindow):
         self.backgroundcolor_visualizer.setStyleSheet(
             f"background-color: {self.backgroundcolor_val.text()}"
         )
-        print(self.current_css)
 
     def change_text_color(self):
         tmp_index = None
         for index, i in enumerate(self.current_css):
-            if "color" in i:
+            if "color: " in i:
                 tmp_index = index
         if tmp_index is None:
             self.current_css.append(f"color: {self.textcolor_val.text()};")
         else:
             self.current_css[tmp_index] = f"color: {self.textcolor_val.text()};"
         self.textcolor_visualizer.setStyleSheet(
-            f"background-color: {self.textcolor_val.text()}"
+            f"background-color : {self.textcolor_val.text()}"
         )
-        print(self.current_css)
+
+    def change_text_font(self):
+        tmp_index = None
+        for index, i in enumerate(self.current_css):
+            if "font-family:" in i:
+                tmp_index = index
+        if tmp_index is None:
+            self.current_css.append(
+                f'font-family: "{self.textfont_val.currentText()}";'
+            )
+        else:
+            self.current_css[
+                tmp_index
+            ] = f'font-family: "{self.textfont_val.currentText()}";'
 
     def color_event(self, obj):
         color = QColorDialog.getColor().name()
@@ -661,6 +786,16 @@ class MyWidget(QMainWindow, Ui_MainWindow):
             self.backgroundcolor_val.setText(color)
         if obj == "text":
             self.textcolor_val.setText(color)
+
+    def change_font_size(self):
+        tmp_index = None
+        for index, i in enumerate(self.current_css):
+            if "font-size" in i:
+                tmp_index = index
+        if tmp_index is None:
+            self.current_css.append(f"font-size: {self.fontsize_val.value()}px;")
+        else:
+            self.current_css[tmp_index] = f"font-size: {self.fontsize_val.value()}px;"
 
 
 if __name__ == "__main__":
