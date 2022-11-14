@@ -1,20 +1,17 @@
 .object{
-    
-    
-    
-    
-    
-    width: 96px;
-    height: 40px;
-    background-color: #56ff3c;
-    outline: dotted;
-    border-radius: 25px;
-    outline-color: #4e66ff;
-    border: solid;
-    border-color: #844bff;
-    color: #ff528f;
-    font-family: "Trebuchet MS";
-    font-size: 13px;
-    outline-width: 10px;
+    width: 100px;
+    height: 70px;
+    background-color: #727272;
+    color: white;
+    outline: hidden;
+    width: 150px;
+    color: white;
+    border: outset;
+    font-family: "Times New Roman";
+    font-size: 25px;
+    outline-color: #ff00ea;
+    border-color: #39c0ff;
+    border-radius: 10px;
     border-width: 10px;
+    text-align: center;
 }

@@ -9,16 +9,6 @@ from PyQt5.QtWidgets import QApplication, QColorDialog, QMainWindow
 
 
 class PyQtDb:
-    """ЭТО ВРЕМЕННОЕ РЕШЕНИЕ
-    из=за того что sqlite не берет строки
-    в которых имеются знаки " и \, я на время
-    хранения их в бд, меняю по следующему принципу
-
-    " -> ⋽
-    \ -> ⋵
-
-    """
-
     def __init__(self, table="authorization"):
         self.table = table
 
@@ -380,6 +370,22 @@ class Ui_MainWindow(object):
         self.fontsize_val.setObjectName("fontsize_val")
         self.horizontalLayout_15.addWidget(self.fontsize_val)
         self.verticalLayout.addWidget(self.fontsize_frame)
+        # text-align
+        self.textalign_frame = QtWidgets.QFrame(self.scrollAreaWidgetContents)
+        self.textalign_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.textalign_frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.textalign_frame.setObjectName("textalign_frame")
+        self.horizontalLayout_16 = QtWidgets.QHBoxLayout(self.textalign_frame)
+        self.horizontalLayout_16.setObjectName("horizontalLayout_7")
+        self.textalign_lbl = QtWidgets.QLabel(self.textalign_frame)
+        self.textalign_lbl.setObjectName("textalign_lbl")
+        self.horizontalLayout_16.addWidget(self.textalign_lbl)
+
+        self.textalign_val = QtWidgets.QComboBox(self.textalign_frame)
+        self.textalign_val.addItems(["left", "center", "right", "justify"])
+        self.textalign_val.setObjectName("textalign_val")
+        self.horizontalLayout_16.addWidget(self.textalign_val)
+        self.verticalLayout.addWidget(self.textalign_frame)
 
         # other
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
@@ -436,6 +442,7 @@ class Ui_MainWindow(object):
         self.textcolor_lbl.setText(_translate("MainWindow", "Text color"))
         self.textfont_lbl.setText(_translate("MainWindow", "Text font"))
         self.fontsize_lbl.setText(_translate("MainWindow", "Font size"))
+        self.textalign_lbl.setText(_translate("MainWindow", "Text align"))
         self.menuFile.setTitle(_translate("MainWindow", "File"))
         self.menuAbout.setTitle(_translate("MainWindow", "About"))
         self.menuCSS.setTitle(_translate("MainWindow", "CSS"))
@@ -452,7 +459,6 @@ class MyWidget(QMainWindow, Ui_MainWindow):
         self.setupUi(self)
         with open("style.css", "r") as cssfile:
             self.current_css = cssfile.read()[8:-2].split("\n    ")
-        print(self.current_css)
         # actions connect
         self.size_val1.textChanged.connect(self.change_width)
         self.size_val2.textChanged.connect(self.change_height)
@@ -476,6 +482,7 @@ class MyWidget(QMainWindow, Ui_MainWindow):
         self.textcolor_visualizer.clicked.connect(lambda: self.color_event("text"))
         self.textfont_val.currentTextChanged.connect(self.change_text_font)
         self.fontsize_val.textChanged.connect(self.change_font_size)
+        self.textalign_val.currentTextChanged.connect(self.change_text_align)
         self.actionSave_Preset.triggered.connect(self.save_preset)
         self.actionLoad_Preset.triggered.connect(self.load_preset)
         self.actionCopy_Text.triggered.connect(self.copy_text)
@@ -487,7 +494,6 @@ class MyWidget(QMainWindow, Ui_MainWindow):
     def set_values(self):
         height = list(filter(lambda x: "height:" in x, self.current_css))
         width = list(filter(lambda x: "width:" in x, self.current_css))
-        print(height, width)
         if len(width) != 0:
             self.size_val1.setValue(int(width[0].split()[1][:-3]))
         else:
@@ -541,7 +547,12 @@ class MyWidget(QMainWindow, Ui_MainWindow):
         else:
             self.backgroundcolor_val.setText("#ffffff")
 
-        text_color = list(filter(lambda x: "color: " in x, self.current_css))
+        text_color = list(
+            filter(
+                lambda x: "color: " in x and not ("background-color" in x),
+                self.current_css,
+            )
+        )
         if len(text_color) != 0:
             self.textcolor_val.setText(text_color[0].split()[1][:-1])
         else:
@@ -557,6 +568,11 @@ class MyWidget(QMainWindow, Ui_MainWindow):
             self.fontsize_val.setValue(int(font_size[0].split()[1][:-3]))
         else:
             self.fontsize_val.setValue(20)
+        text_align = list(filter(lambda x: "text-align" in x, self.current_css))
+        if len(text_align) != 0:
+            self.textalign_val.setCurrentText(text_align[0].split()[1][1:-2])
+        else:
+            self.textalign_val.setCurrentText("left")
 
     def save_preset(self):
         name, ok_pressed = QtWidgets.QInputDialog.getText(
@@ -608,7 +624,7 @@ class MyWidget(QMainWindow, Ui_MainWindow):
 
     def apply_action(self):
         with open("style.css", "w") as file:
-            file.write(".object{\n    " + "\n    ".join(self.current_css) + "\n}")
+            file.write(".object{\n" + "\n    ".join(self.current_css) + "\n}")
 
         self.webEngineView.load(
             QtCore.QUrl().fromLocalFile(
@@ -617,11 +633,9 @@ class MyWidget(QMainWindow, Ui_MainWindow):
         )
 
     def change_height(self):
-        print("height changed")
         tmp_index = None
         for index, i in enumerate(self.current_css):
             if "height:" in i:
-                print(i)
                 tmp_index = index
         if tmp_index is None:
             self.current_css.append(f"height: {self.size_val2.value()}px;")
@@ -752,7 +766,7 @@ class MyWidget(QMainWindow, Ui_MainWindow):
     def change_text_color(self):
         tmp_index = None
         for index, i in enumerate(self.current_css):
-            if "color: " in i:
+            if "color: " in i and not ("background-color" in i):
                 tmp_index = index
         if tmp_index is None:
             self.current_css.append(f"color: {self.textcolor_val.text()};")
@@ -796,6 +810,18 @@ class MyWidget(QMainWindow, Ui_MainWindow):
             self.current_css.append(f"font-size: {self.fontsize_val.value()}px;")
         else:
             self.current_css[tmp_index] = f"font-size: {self.fontsize_val.value()}px;"
+
+    def change_text_align(self):
+        tmp_index = None
+        for index, i in enumerate(self.current_css):
+            if "text-align:" in i:
+                tmp_index = index
+        if tmp_index is None:
+            self.current_css.append(f"text-align: {self.textalign_val.currentText()};")
+        else:
+            self.current_css[
+                tmp_index
+            ] = f"text-align: {self.textalign_val.currentText()};"
 
 
 if __name__ == "__main__":
